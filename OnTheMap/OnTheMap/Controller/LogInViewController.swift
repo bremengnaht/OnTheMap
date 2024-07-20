@@ -18,8 +18,16 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        txtEmail.text = ""
+        txtPassword.text = ""
+    }
+    
     @IBAction func login(_ sender: UIButton) {
         enableLogInControls(false)
+        
+        //success
+        self.performSegue(withIdentifier: "loginSuccessSegue", sender: nil)
     }
     
     private func enableLogInControls(_ enabled: Bool) -> Void {
