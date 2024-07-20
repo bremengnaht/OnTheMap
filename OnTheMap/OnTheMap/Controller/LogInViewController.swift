@@ -25,12 +25,25 @@ class LogInViewController: UIViewController {
     
     @IBAction func login(_ sender: UIButton) {
         enableLogInControls(false)
-        
-        //success
-        self.performSegue(withIdentifier: "loginSuccessSegue", sender: nil)
+        UdacityClient.login(email: txtEmail.text ?? "", password: txtPassword.text ?? "", completion: handleLoginResponse(response:error:))
     }
     
-    private func enableLogInControls(_ enabled: Bool) -> Void {
+    func handleLoginResponse(response: LoginResponse?, error: Error?) -> Void {
+        if let error = error {
+            showAlert(title: "Login Failed", message: (error as! ErrorResponse).error)
+            enableLogInControls(true)
+        } else {
+            self.performSegue(withIdentifier: "loginSuccessSegue", sender: nil)
+        }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default))
+        show(alertVC, sender: nil)
+    }
+    
+    func enableLogInControls(_ enabled: Bool) -> Void {
         if enabled {
             activityIndicator.stopAnimating()
         } else {
