@@ -81,11 +81,9 @@
 		2A76DBCA2C4266DE00ABB260 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2A9CB5802C4B59FC00018214 /* StudentInfo.swift */,
 				2A76DBB42C42357E00ABB260 /* AppDelegate.swift */,
 				2A76DBB62C42357E00ABB260 /* SceneDelegate.swift */,
 				2A76DBB82C42357E00ABB260 /* ViewController.swift */,
-				2A9CB57E2C4B59CB00018214 /* StudentLocations.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -93,6 +91,8 @@
 		2AEF354A2C437E1500229AB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2A9CB5802C4B59FC00018214 /* StudentInfo.swift */,
+				2A9CB57E2C4B59CB00018214 /* StudentLocations.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
