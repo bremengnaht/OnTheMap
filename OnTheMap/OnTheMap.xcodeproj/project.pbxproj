@@ -16,6 +16,8 @@
 		2A9CB5812C4B5A1A00018214 /* StudentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9CB5802C4B59FC00018214 /* StudentInfo.swift */; };
 		2A9CB5832C4B707000018214 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9CB5822C4B707000018214 /* LogInViewController.swift */; };
 		2A9CB5852C4B819800018214 /* UIViewControlerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9CB5842C4B818100018214 /* UIViewControlerExtension.swift */; };
+		2A9CB5872C4BA0C600018214 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9CB5862C4BA0C600018214 /* MapViewController.swift */; };
+		2A9CB5892C4BA0DD00018214 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9CB5882C4BA0DD00018214 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		2A9CB5802C4B59FC00018214 /* StudentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfo.swift; sourceTree = "<group>"; };
 		2A9CB5822C4B707000018214 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		2A9CB5842C4B818100018214 /* UIViewControlerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControlerExtension.swift; sourceTree = "<group>"; };
+		2A9CB5862C4BA0C600018214 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2A9CB5882C4BA0DD00018214 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				2A76DBB42C42357E00ABB260 /* AppDelegate.swift */,
 				2A76DBB62C42357E00ABB260 /* SceneDelegate.swift */,
 				2A9CB5822C4B707000018214 /* LogInViewController.swift */,
+				2A9CB5862C4BA0C600018214 /* MapViewController.swift */,
+				2A9CB5882C4BA0DD00018214 /* ListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +183,8 @@
 				2A76DBB52C42357E00ABB260 /* AppDelegate.swift in Sources */,
 				2A76DBB72C42357E00ABB260 /* SceneDelegate.swift in Sources */,
 				2A9CB5852C4B819800018214 /* UIViewControlerExtension.swift in Sources */,
+				2A9CB5892C4BA0DD00018214 /* ListViewController.swift in Sources */,
+				2A9CB5872C4BA0C600018214 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
