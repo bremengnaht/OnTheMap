@@ -8,10 +8,29 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-
+    @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var btnSignUp: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func login(_ sender: UIButton) {
+        enableLogInControls(false)
+    }
+    
+    private func enableLogInControls(_ enabled: Bool) -> Void {
+        if enabled {
+            activityIndicator.stopAnimating()
+        } else {
+            activityIndicator.startAnimating()
+        }
+        isEnableControl(enabled, control: txtEmail)
+        isEnableControl(enabled, control: txtPassword)
+        isEnableControl(enabled, control: btnLogin)
+        isEnableControl(enabled, control: btnSignUp)
     }
 }
