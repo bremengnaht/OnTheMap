@@ -23,7 +23,7 @@ class UdacityClient {
         var stringValue: String {
             switch self {
             case .getStudentLocations:
-                return Endpoints.base + "/StudentLocation?order=-updateAt"
+                return Endpoints.base + "/StudentLocation?order=-updateAt&limit=100"
             case .addStudentLocation:
                 return Endpoints.base + "/StudentLocation"
             case .login:
