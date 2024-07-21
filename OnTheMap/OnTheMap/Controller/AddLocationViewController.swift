@@ -23,26 +23,34 @@ class AddLocationViewController: UIViewController {
     }
     
     @IBAction func findLocation(_ sender: Any) {
-        if (txtLocation.text ?? "") == "" || (txtLink.text ?? "") == "" {
+        guard let locationText = txtLocation.text else { return }
+        guard let linkText = txtLink.text else { return }
+        guard locationText != "" && linkText != "" else {
             showAlert(title: "Alert !", message: "Can't leave empty")
-        } else {
-            CLGeocoder().geocodeAddressString(txtLocation.text!) { (newMarker, error) in
-                if let error = error {
-                    self.showAlert(title: "Error", message: "Location Not Found")
+            return
+        }
+        guard isValidURL(linkText) else {
+            showAlert(title: "Alert !", message: "Link is not valid")
+            return
+        }
+        
+        CLGeocoder().geocodeAddressString(locationText) { (newMarker, error) in
+            if error != nil {
+                self.showAlert(title: "Error", message: "Location Not Found")
+            } else {
+                var location: CLLocation?
+                if let marker = newMarker, marker.count > 0 {
+                    location = marker.first?.location
+                }
+                if let location = location {
+                    self.request = CreateStudentLocationRequest(firstName: "Test", lastName: "User", latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, mapString: locationText, mediaURL: linkText, uniqueKey: UUID().uuidString)
+                    self.performSegue(withIdentifier: "addLocationFinalStep", sender: nil)
                 } else {
-                    var location: CLLocation?
-                    if let marker = newMarker, marker.count > 0 {
-                        location = marker.first?.location
-                    }
-                    if let location = location {
-                        self.request = CreateStudentLocationRequest(firstName: "Test", lastName: "User", latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, mapString: self.txtLocation.text!, mediaURL: self.txtLink.text!, uniqueKey: UUID().uuidString)
-                        self.performSegue(withIdentifier: "addLocationFinalStep", sender: nil)
-                    } else {
-                        self.showAlert(title: "Alert !", message: "Location do not exists")
-                    }
+                    self.showAlert(title: "Alert !", message: "Location do not exists")
                 }
             }
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

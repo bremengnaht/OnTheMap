@@ -27,4 +27,10 @@ extension UIViewController {
         self.present(alertVC, animated: true)
     }
     
+    func isValidURL(_ urlString: String) -> Bool {
+        if let url = URL(string: urlString) {
+            return UIApplication.shared.canOpenURL(url)
+        }
+        return false
+    }
 }
