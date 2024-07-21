@@ -246,6 +246,9 @@
                                     <action selector="findLocation:" destination="r4v-m9-KqX" eventType="touchUpInside" id="Pq7-o6-RNY"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="oHT-iD-h6F">
+                                <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5DT-Bx-5Pd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -256,7 +259,9 @@
                             <constraint firstItem="Dhl-PE-ic4" firstAttribute="width" secondItem="5DT-Bx-5Pd" secondAttribute="width" multiplier="0.8" id="JHX-o6-zdB"/>
                             <constraint firstItem="dRW-o4-l9e" firstAttribute="top" secondItem="mtE-LZ-Vzz" secondAttribute="bottom" constant="10" id="UIR-k1-lOc"/>
                             <constraint firstItem="Dhl-PE-ic4" firstAttribute="centerX" secondItem="5DT-Bx-5Pd" secondAttribute="centerX" id="WGw-5x-Z7B"/>
+                            <constraint firstItem="oHT-iD-h6F" firstAttribute="centerX" secondItem="iab-UQ-T9N" secondAttribute="centerX" id="Xp9-UM-5mh"/>
                             <constraint firstItem="dRW-o4-l9e" firstAttribute="centerX" secondItem="5DT-Bx-5Pd" secondAttribute="centerX" id="azl-dL-ATd"/>
+                            <constraint firstItem="oHT-iD-h6F" firstAttribute="centerY" secondItem="iab-UQ-T9N" secondAttribute="centerY" id="bIj-DU-Lhd"/>
                             <constraint firstItem="mtE-LZ-Vzz" firstAttribute="centerX" secondItem="5DT-Bx-5Pd" secondAttribute="centerX" id="jul-Fn-qTW"/>
                             <constraint firstItem="Dhl-PE-ic4" firstAttribute="top" secondItem="scG-z6-II3" secondAttribute="bottom" constant="50" id="mnn-Kp-Z68"/>
                             <constraint firstItem="dRW-o4-l9e" firstAttribute="width" secondItem="mtE-LZ-Vzz" secondAttribute="width" id="quj-Ph-U5e"/>
@@ -271,6 +276,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="oHT-iD-h6F" id="0cW-Gw-JsU"/>
                         <outlet property="txtLink" destination="mtE-LZ-Vzz" id="hhI-68-CCX"/>
                         <outlet property="txtLocation" destination="Dhl-PE-ic4" id="kfg-MU-bYk"/>
                         <segue destination="rjv-XU-Al1" kind="show" identifier="addLocationFinalStep" id="CJm-5x-qdg"/>
