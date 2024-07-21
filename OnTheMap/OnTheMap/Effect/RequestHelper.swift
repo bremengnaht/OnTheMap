@@ -25,9 +25,15 @@ class RequestHelper {
             dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
             
-            let responseObject = try! decoder.decode(ResponseType.self, from: data)
-            DispatchQueue.main.async {
-                completion(responseObject, nil)
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, ErrorResponse(status: nil, error: "Something wrong"))
+                }
             }
         }
         task.resume()
