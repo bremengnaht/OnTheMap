@@ -37,6 +37,7 @@ class LogInViewController: UIViewController {
     //MARK: Func
     func handleLoginResponse(response: LoginResponse?, error: Error?) -> Void {
         if let response = response {
+            UdacityClient.auth = response
             self.performSegue(withIdentifier: "loginSuccessSegue", sender: nil)
         } else {
             showAlert(title: "Login Failed", message: (error as! ErrorResponse).error)
