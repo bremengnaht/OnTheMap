@@ -8,12 +8,13 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         activityIndicator.stopAnimating()
         
         if StudentsData.sharedInstance().students.count == 0 {
@@ -35,6 +36,13 @@ class MapViewController: UIViewController {
     @IBAction func refreshMap(_ sender: Any) {
         activityIndicator.startAnimating()
         UdacityClient.getStudentLocations(completion: handleGetStudentLocationsResponse(locations:error:))
+    }
+    
+    //MARK: Delegate
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let url = URL(string: (view.annotation?.subtitle ?? "") ?? "")
+        guard let url = url else { return }
+        UIApplication.shared.open(url)
     }
     
     //MARK: Handler
