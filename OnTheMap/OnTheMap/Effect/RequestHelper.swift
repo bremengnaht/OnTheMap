@@ -59,19 +59,18 @@ class RequestHelper {
             dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
             
-            do {
-                let responseObject = try decoder.decode(ResponseType.self, from: formattedData)
+            let httpURLResponse = response as! HTTPURLResponse
+            if httpURLResponse.statusCode == 200 {
+                let responseObject = try! decoder.decode(ResponseType.self, from: formattedData)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
-            } catch {
+            } else {
                 let errorResponse = try! decoder.decode(ErrorResponse.self, from: formattedData)
                 DispatchQueue.main.async {
                     completion(nil, errorResponse)
                 }
             }
-            
-            
         }
         task.resume()
     }
