@@ -129,7 +129,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="643"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="listIdentifier" id="gdp-GJ-d1J">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gdp-GJ-d1J" customClass="CustomUITableViewCell" customModule="OnTheMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="52.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gdp-GJ-d1J" id="aEJ-Ex-69f">
@@ -174,6 +174,10 @@
                                                 <constraint firstItem="r2H-BD-9id" firstAttribute="leading" secondItem="aEJ-Ex-69f" secondAttribute="leading" constant="10" id="zvY-yi-qbQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="txtSubtitle" destination="mkL-gm-wyf" id="VbX-nM-kWu"/>
+                                            <outlet property="txtTitle" destination="Ny6-pj-qvM" id="LLO-1T-bNB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -378,7 +382,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sHn-C1-e9C"/>
+        <segue reference="Yc6-hC-juk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>
