@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import MapKit
 
 class ConfirmLocationViewController: UIViewController {
-
+    @IBOutlet var mapView: MKMapView!
+    
+    var location: String = ""
+    var link: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-
+    @IBAction func finishAdd(_ sender: Any) {
+        
+    }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class AddLocationViewController: UIViewController {
     @IBOutlet weak var txtLocation: UITextField!
@@ -20,6 +21,19 @@ class AddLocationViewController: UIViewController {
     }
     
     @IBAction func findLocation(_ sender: Any) {
+        if (txtLocation.text ?? "") == "" || (txtLink.text ?? "") == "" {
+            showAlert(title: "Alert !", message: "Can't leave empty")
+        } else {
+            
+            performSegue(withIdentifier: "addLocationFinalStep", sender: nil)
+        }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addLocationFinalStep" {
+            let destination = segue.destination as! ConfirmLocationViewController
+            destination.location = txtLocation.text!
+            destination.link = txtLink.text!
+        }
+    }
 }
