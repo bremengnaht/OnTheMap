@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct LoginResponse: Decodable {
+struct LoginResponse: Codable {
     let account: LoginResponseAccount
     let session: LoginResponseSession
 }
 
-struct LoginResponseAccount: Decodable {
+struct LoginResponseAccount: Codable {
     let registered: Bool
     let key: String
 }
 
-struct LoginResponseSession: Decodable {
+struct LoginResponseSession: Codable {
     let id: String
     let expiration: Date
 }

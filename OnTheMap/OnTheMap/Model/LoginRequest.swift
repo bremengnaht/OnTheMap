@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginRequest: Encodable {
+struct LoginRequest: Codable {
     let udacity: LoginInfo
     
     init(username: String, password: String) {
@@ -15,7 +15,7 @@ struct LoginRequest: Encodable {
     }
 }
 
-struct LoginInfo: Encodable {
+struct LoginInfo: Codable {
     let username: String
     let password: String
     

@@ -204,6 +204,9 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="803"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="p5l-3h-CSf">
+                                <rect key="frame" x="188.5" y="405" width="37" height="37"/>
+                            </activityIndicatorView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oj6-VS-SQD">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
@@ -214,8 +217,16 @@
                                             </connections>
                                         </barButtonItem>
                                         <rightBarButtonItems>
-                                            <barButtonItem image="icon_addpin" id="l5I-CM-CNS"/>
-                                            <barButtonItem image="icon_refresh" id="xhC-VV-h5f"/>
+                                            <barButtonItem image="icon_addpin" id="l5I-CM-CNS">
+                                                <connections>
+                                                    <action selector="addPin:" destination="t4b-wn-NnL" id="mzr-R8-JBt"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="icon_refresh" id="xhC-VV-h5f">
+                                                <connections>
+                                                    <action selector="refreshMap:" destination="t4b-wn-NnL" id="Gom-Be-8Oq"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
@@ -224,8 +235,10 @@
                         <viewLayoutGuide key="safeArea" id="VBy-cd-5FH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="p5l-3h-CSf" firstAttribute="centerX" secondItem="VBy-cd-5FH" secondAttribute="centerX" id="0a2-lX-cQu"/>
                             <constraint firstItem="oj6-VS-SQD" firstAttribute="top" secondItem="VBy-cd-5FH" secondAttribute="top" id="E9I-TE-xzK"/>
                             <constraint firstItem="FLk-2F-4zX" firstAttribute="leading" secondItem="VBy-cd-5FH" secondAttribute="leading" id="IO9-ax-Wyh"/>
+                            <constraint firstItem="p5l-3h-CSf" firstAttribute="centerY" secondItem="VBy-cd-5FH" secondAttribute="centerY" id="L3I-hS-KG3"/>
                             <constraint firstItem="oj6-VS-SQD" firstAttribute="leading" secondItem="VBy-cd-5FH" secondAttribute="leading" id="YRC-Pf-cf3"/>
                             <constraint firstItem="FLk-2F-4zX" firstAttribute="bottom" secondItem="VBy-cd-5FH" secondAttribute="bottom" id="Z78-og-9I6"/>
                             <constraint firstItem="FLk-2F-4zX" firstAttribute="trailing" secondItem="VBy-cd-5FH" secondAttribute="trailing" id="e9c-60-pgv"/>
@@ -234,6 +247,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-selected" selectedImage="icon_mapview-deselected" id="aT2-R4-6X0"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="p5l-3h-CSf" id="uXv-Gk-9Jr"/>
+                        <outlet property="mapView" destination="FLk-2F-4zX" id="340-r7-Lqi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjq-Y3-dcg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

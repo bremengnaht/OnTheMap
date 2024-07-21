@@ -13,7 +13,7 @@ class RequestHelper {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
-                    completion(nil, error)
+                    completion(nil, ErrorResponse(status: nil, error: "API return an error"))
                 }
                 return
             }
@@ -45,7 +45,9 @@ class RequestHelper {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, ErrorResponse(status: nil, error: "API return an error"))
+                }
                 return
             }
             // Must do if call from Udacity's API
