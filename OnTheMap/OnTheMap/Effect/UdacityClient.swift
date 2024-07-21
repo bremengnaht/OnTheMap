@@ -48,7 +48,7 @@ class UdacityClient {
     }
     
     static func addStudentLocation(requestBody: CreateStudentLocationRequest ,completion: @escaping (CreateStudentLocationResponse?, Error?) -> Void) -> Void {
-        RequestHelper.taskForPOSTOrPutRequest(url: Endpoints.addStudentLocation.url, httpMethod: "POST", requestBody: requestBody, responseType: CreateStudentLocationResponse.self, completion: completion)
+        RequestHelper.taskForPOSTOrPutRequest(url: Endpoints.addStudentLocation.url, httpMethod: "POST", formatRes: false, requestBody: requestBody, responseType: CreateStudentLocationResponse.self, completion: completion)
     }
     
     // MARK: Auth APIs

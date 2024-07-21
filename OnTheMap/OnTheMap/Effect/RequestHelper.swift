@@ -33,7 +33,7 @@ class RequestHelper {
         task.resume()
     }
     
-    static func taskForPOSTOrPutRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, httpMethod: String, requestBody: RequestType, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+    static func taskForPOSTOrPutRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, httpMethod: String, formatRes: Bool = true, requestBody: RequestType, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
         
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
@@ -51,7 +51,10 @@ class RequestHelper {
                 return
             }
             // Must do if call from Udacity's API
-            let range = 5..<data.count
+            var range = 5..<data.count
+            if !formatRes {
+                range = 0..<data.count
+            }
             let formattedData = data.subdata(in: range)
             
             let decoder = JSONDecoder()
@@ -61,16 +64,22 @@ class RequestHelper {
             dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
             
-            let httpURLResponse = response as! HTTPURLResponse
-            if httpURLResponse.statusCode == 200 {
-                let responseObject = try! decoder.decode(ResponseType.self, from: formattedData)
+            print(String(data: data, encoding: .utf8)!)
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: formattedData)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
-            } else {
-                let errorResponse = try! decoder.decode(ErrorResponse.self, from: formattedData)
-                DispatchQueue.main.async {
-                    completion(nil, errorResponse)
+            } catch {
+                do {
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: formattedData)
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, ErrorResponse(status: nil, error: "Something wrong"))
+                    }
                 }
             }
         }

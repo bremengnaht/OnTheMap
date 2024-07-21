@@ -8,6 +8,6 @@
 import Foundation
 
 struct CreateStudentLocationResponse: Codable {
-    let createAt: Date
+    let createdAt: Date
     let objectId: String
 }
