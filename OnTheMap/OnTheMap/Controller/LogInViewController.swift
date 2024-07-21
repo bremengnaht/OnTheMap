@@ -16,6 +16,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        enableLogInControls(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
