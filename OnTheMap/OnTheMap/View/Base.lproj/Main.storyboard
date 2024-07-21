@@ -241,7 +241,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRW-o4-l9e">
                                 <rect key="frame" x="41.333333333333343" y="399" width="331.33333333333326" height="39"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Find Location"/>
                                 <connections>
                                     <action selector="findLocation:" destination="r4v-m9-KqX" eventType="touchUpInside" id="Pq7-o6-RNY"/>
                                 </connections>
