@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UdacityClient {
     static var auth: LoginResponse?
@@ -61,6 +62,6 @@ class UdacityClient {
     }
     
     static func signUp() -> Void {
-        
+        UIApplication.shared.open(Endpoints.signup.url)
     }
 }

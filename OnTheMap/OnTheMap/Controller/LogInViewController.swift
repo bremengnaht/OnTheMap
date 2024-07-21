@@ -23,11 +23,18 @@ class LogInViewController: UIViewController {
         txtPassword.text = ""
     }
     
+    //MARK: IBAction
+    
     @IBAction func login(_ sender: UIButton) {
         enableLogInControls(false)
         UdacityClient.login(email: txtEmail.text ?? "", password: txtPassword.text ?? "", completion: handleLoginResponse(response:error:))
     }
     
+    @IBAction func signUp(_ sender: Any) {
+        UdacityClient.signUp()
+    }
+    
+    //MARK: Func
     func handleLoginResponse(response: LoginResponse?, error: Error?) -> Void {
         if let response = response {
             self.performSegue(withIdentifier: "loginSuccessSegue", sender: nil)
