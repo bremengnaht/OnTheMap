@@ -40,9 +40,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     //MARK: Delegate
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let url = URL(string: (view.annotation?.subtitle ?? "") ?? "")
-        guard let url = url else { return }
-        UIApplication.shared.open(url)
+        guard let urlString = view.annotation?.subtitle ?? "" else { return }
+        guard isValidURL(urlString) else {
+            showAlert(title: "Alert !", message: "Link is not valid")
+            return
+        }
+        UIApplication.shared.open(URL(string: urlString)!)
     }
     
     //MARK: Handler

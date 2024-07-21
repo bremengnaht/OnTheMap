@@ -53,6 +53,15 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let urlString = StudentsData.sharedInstance().students[indexPath.row].mediaURL
+        guard isValidURL(urlString) else {
+            showAlert(title: "Alert !", message: "Link is not valid")
+            return
+        }
+        UIApplication.shared.open(URL(string: urlString)!)
+    }
+    
     //MARK: Handler
     func handleGetStudentLocationsResponse(locations: StudentLocations?, error: Error?) -> Void {
         activityIndicator.stopAnimating()
