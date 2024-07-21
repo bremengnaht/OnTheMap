@@ -12,6 +12,8 @@ class AddLocationViewController: UIViewController {
     @IBOutlet weak var txtLocation: UITextField!
     @IBOutlet weak var txtLink: UITextField!
     
+    var request: CreateStudentLocationRequest?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -24,16 +26,29 @@ class AddLocationViewController: UIViewController {
         if (txtLocation.text ?? "") == "" || (txtLink.text ?? "") == "" {
             showAlert(title: "Alert !", message: "Can't leave empty")
         } else {
-            
-            performSegue(withIdentifier: "addLocationFinalStep", sender: nil)
+            CLGeocoder().geocodeAddressString(txtLocation.text!) { (newMarker, error) in
+                if let error = error {
+                    self.showAlert(title: "Error", message: "Location Not Found")
+                } else {
+                    var location: CLLocation?
+                    if let marker = newMarker, marker.count > 0 {
+                        location = marker.first?.location
+                    }
+                    if let location = location {
+                        self.request = CreateStudentLocationRequest(firstName: "Test", lastName: "User", latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, mapString: self.txtLocation.text!, mediaURL: self.txtLink.text!, uniqueKey: UUID().uuidString)
+                        self.performSegue(withIdentifier: "addLocationFinalStep", sender: nil)
+                    } else {
+                        self.showAlert(title: "Alert !", message: "Location do not exists")
+                    }
+                }
+            }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addLocationFinalStep" {
             let destination = segue.destination as! ConfirmLocationViewController
-            destination.location = txtLocation.text!
-            destination.link = txtLink.text!
+            destination.request = self.request
         }
     }
 }

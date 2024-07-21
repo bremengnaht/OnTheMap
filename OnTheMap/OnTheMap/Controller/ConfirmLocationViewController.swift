@@ -11,14 +11,18 @@ import MapKit
 class ConfirmLocationViewController: UIViewController {
     @IBOutlet var mapView: MKMapView!
     
-    var location: String = ""
-    var link: String = ""
+    var request: CreateStudentLocationRequest?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func finishAdd(_ sender: Any) {
-        
+        if let request = request {
+            UdacityClient.addStudentLocation(requestBody: request) { response, error in
+                print("TEST")
+                self.dismiss(animated: true)
+            }
+        }
     }
 }
