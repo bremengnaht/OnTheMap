@@ -10,6 +10,8 @@
 		2A09A7782C4C01B40062E443 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09A7772C4C01AB0062E443 /* LoginRequest.swift */; };
 		2A09A77A2C4C03860062E443 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09A7792C4C03800062E443 /* LoginResponse.swift */; };
 		2A09A77C2C4C11320062E443 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09A77B2C4C11290062E443 /* ErrorResponse.swift */; };
+		2A09A7802C4CF3E90062E443 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09A77F2C4CF3E90062E443 /* AddLocationViewController.swift */; };
+		2A09A7822C4CF3FA0062E443 /* ConfirmLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09A7812C4CF3FA0062E443 /* ConfirmLocationViewController.swift */; };
 		2A76DBB52C42357E00ABB260 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A76DBB42C42357E00ABB260 /* AppDelegate.swift */; };
 		2A76DBB72C42357E00ABB260 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A76DBB62C42357E00ABB260 /* SceneDelegate.swift */; };
 		2A76DBBC2C42357E00ABB260 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2A76DBBB2C42357E00ABB260 /* Base */; };
@@ -28,6 +30,8 @@
 		2A09A7772C4C01AB0062E443 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		2A09A7792C4C03800062E443 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		2A09A77B2C4C11290062E443 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		2A09A77F2C4CF3E90062E443 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		2A09A7812C4CF3FA0062E443 /* ConfirmLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationViewController.swift; sourceTree = "<group>"; };
 		2A76DBB12C42357E00ABB260 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A76DBB42C42357E00ABB260 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A76DBB62C42357E00ABB260 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				2A9CB5822C4B707000018214 /* LogInViewController.swift */,
 				2A9CB5862C4BA0C600018214 /* MapViewController.swift */,
 				2A9CB5882C4BA0DD00018214 /* ListViewController.swift */,
+				2A09A77F2C4CF3E90062E443 /* AddLocationViewController.swift */,
+				2A09A7812C4CF3FA0062E443 /* ConfirmLocationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -201,7 +207,9 @@
 				2A9CB5832C4B707000018214 /* LogInViewController.swift in Sources */,
 				2A76DBB52C42357E00ABB260 /* AppDelegate.swift in Sources */,
 				2A09A77C2C4C11320062E443 /* ErrorResponse.swift in Sources */,
+				2A09A7822C4CF3FA0062E443 /* ConfirmLocationViewController.swift in Sources */,
 				2A76DBB72C42357E00ABB260 /* SceneDelegate.swift in Sources */,
+				2A09A7802C4CF3E90062E443 /* AddLocationViewController.swift in Sources */,
 				2A9CB58F2C4BAA9500018214 /* RequestHelper.swift in Sources */,
 				2A9CB5852C4B819800018214 /* UIViewControlerExtension.swift in Sources */,
 				2A9CB5892C4BA0DD00018214 /* ListViewController.swift in Sources */,

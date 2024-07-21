@@ -29,10 +29,6 @@ class MapViewController: UIViewController {
         UdacityClient.getStudentLocations(completion: handleGetStudentLocationsResponse(locations:error:))
     }
     
-    @IBAction func addPin(_ sender: Any) {
-        // TODO
-    }
-    
     //MARK: Handler
     func handleGetStudentLocationsResponse(locations: StudentLocations?, error: Error?) -> Void {
         activityIndicator.stopAnimating()
