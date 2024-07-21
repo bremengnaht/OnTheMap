@@ -11,15 +11,20 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
     
-    var data: [StudentInfo] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        activityIndicator.stopAnimating()
         
-        activityIndicator.startAnimating()
-        UdacityClient.getStudentLocations(completion: handleGetStudentLocationsResponse(locations:error:))
+        if StudentsData.sharedInstance().students.count == 0 {
+            activityIndicator.startAnimating()
+            UdacityClient.getStudentLocations(completion: handleGetStudentLocationsResponse(locations:error:))
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     @IBAction func logout(_ sender: Any) {
@@ -35,13 +40,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: Table Delegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return StudentsData.sharedInstance().students.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OnTheMapReuseID", for: indexPath) as! CustomUITableViewCell
         
-        let data = data[indexPath.row]
+        let data = StudentsData.sharedInstance().students[indexPath.row]
         cell.txtTitle.text = "\(data.firstName) \(data.lastName)"
         cell.txtSubtitle.text = data.mediaURL
         
@@ -54,7 +59,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let locations = locations?.results else {
             return
         }
-        self.data = locations
+        StudentsData.sharedInstance().students = locations
         tableView.reloadData()
     }
     

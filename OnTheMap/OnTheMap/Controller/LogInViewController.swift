@@ -20,6 +20,7 @@ class LogInViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        StudentsData.sharedInstance().students = []
         txtEmail.text = ""
         txtPassword.text = ""
     }
