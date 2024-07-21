@@ -109,27 +109,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPl-EN-egj">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="On the Map" id="BgK-sT-z7V">
-                                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="FZ3-e3-3b8"/>
-                                        <rightBarButtonItems>
-                                            <barButtonItem image="icon_addpin" id="b6f-uP-8cl">
-                                                <connections>
-                                                    <segue destination="BGl-PU-0Zl" kind="presentation" modalPresentationStyle="fullScreen" id="Yc6-hC-juk"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem image="icon_refresh" id="ohU-Cw-Abg"/>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VIZ-1D-mmy">
                                 <rect key="frame" x="0.0" y="44" width="414" height="643"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gdp-GJ-d1J" customClass="CustomUITableViewCell" customModule="OnTheMap" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OnTheMapReuseID" id="gdp-GJ-d1J" customClass="CustomUITableViewCell" customModule="OnTheMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="52.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gdp-GJ-d1J" id="aEJ-Ex-69f">
@@ -181,20 +165,53 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPl-EN-egj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="On the Map" id="BgK-sT-z7V">
+                                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="FZ3-e3-3b8">
+                                            <connections>
+                                                <action selector="logout:" destination="mzB-PY-WQT" id="gt0-tr-wdp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem image="icon_addpin" id="b6f-uP-8cl">
+                                                <connections>
+                                                    <segue destination="BGl-PU-0Zl" kind="presentation" modalPresentationStyle="fullScreen" id="Yc6-hC-juk"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="icon_refresh" id="ohU-Cw-Abg">
+                                                <connections>
+                                                    <action selector="refresh:" destination="mzB-PY-WQT" id="3zu-IF-haa"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Nth-VT-ypG">
+                                <rect key="frame" x="188.66666666666666" y="325" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FPW-1y-0GI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Nth-VT-ypG" firstAttribute="centerY" secondItem="FPW-1y-0GI" secondAttribute="centerY" id="F1i-ZM-alN"/>
                             <constraint firstItem="RPl-EN-egj" firstAttribute="leading" secondItem="FPW-1y-0GI" secondAttribute="leading" id="F2J-cf-9Hg"/>
                             <constraint firstItem="VIZ-1D-mmy" firstAttribute="leading" secondItem="FPW-1y-0GI" secondAttribute="leading" id="MuO-on-WVt"/>
                             <constraint firstItem="RPl-EN-egj" firstAttribute="trailing" secondItem="FPW-1y-0GI" secondAttribute="trailing" id="NuO-jk-NNj"/>
                             <constraint firstItem="VIZ-1D-mmy" firstAttribute="trailing" secondItem="FPW-1y-0GI" secondAttribute="trailing" id="azE-Va-yqf"/>
                             <constraint firstItem="RPl-EN-egj" firstAttribute="top" secondItem="FPW-1y-0GI" secondAttribute="top" id="hxI-Be-iKB"/>
+                            <constraint firstItem="Nth-VT-ypG" firstAttribute="centerX" secondItem="FPW-1y-0GI" secondAttribute="centerX" id="kBf-5M-3N2"/>
                             <constraint firstItem="VIZ-1D-mmy" firstAttribute="bottom" secondItem="FPW-1y-0GI" secondAttribute="bottom" id="lIe-BR-Dcc"/>
                             <constraint firstItem="VIZ-1D-mmy" firstAttribute="top" secondItem="RPl-EN-egj" secondAttribute="bottom" id="s9r-Da-rSd"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="List" image="icon_listview-selected" selectedImage="icon_listview-deselected" id="q8q-GN-dr5"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Nth-VT-ypG" id="obI-5L-0zi"/>
+                        <outlet property="tableView" destination="VIZ-1D-mmy" id="X1h-IF-Odr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEu-ET-HNy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
