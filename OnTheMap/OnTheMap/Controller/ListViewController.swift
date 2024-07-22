@@ -16,15 +16,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         activityIndicator.stopAnimating()
-        
-        if StudentsData.sharedInstance().students.count == 0 {
-            activityIndicator.startAnimating()
-            UdacityClient.getStudentLocations(completion: handleGetStudentLocationsResponse(locations:error:))
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+        activityIndicator.startAnimating()
+        UdacityClient.getStudentLocations(completion: handleGetStudentLocationsResponse(locations:error:))
     }
     
     @IBAction func logout(_ sender: Any) {

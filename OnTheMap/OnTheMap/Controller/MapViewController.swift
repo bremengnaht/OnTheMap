@@ -16,15 +16,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         activityIndicator.stopAnimating()
-        
-        if StudentsData.sharedInstance().students.count == 0 {
-            activityIndicator.startAnimating()
-            UdacityClient.getStudentLocations(completion: handleGetStudentLocationsResponse(locations:error:))
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateAnnotationFromDataSource()
+        activityIndicator.startAnimating()
+        UdacityClient.getStudentLocations(completion: handleGetStudentLocationsResponse(locations:error:))
     }
 
     //MARK: IBAction
