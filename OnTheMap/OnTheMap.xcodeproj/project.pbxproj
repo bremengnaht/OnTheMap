@@ -13,6 +13,7 @@
 		2A09A7802C4CF3E90062E443 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09A77F2C4CF3E90062E443 /* AddLocationViewController.swift */; };
 		2A09A7822C4CF3FA0062E443 /* ConfirmLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09A7812C4CF3FA0062E443 /* ConfirmLocationViewController.swift */; };
 		2A65AA7E2C4D61540055744C /* StudentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A65AA7D2C4D61480055744C /* StudentData.swift */; };
+		2A65AA802C4E31270055744C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A65AA7F2C4E31240055744C /* UserInfo.swift */; };
 		2A76DBB52C42357E00ABB260 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A76DBB42C42357E00ABB260 /* AppDelegate.swift */; };
 		2A76DBB72C42357E00ABB260 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A76DBB62C42357E00ABB260 /* SceneDelegate.swift */; };
 		2A76DBBC2C42357E00ABB260 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2A76DBBB2C42357E00ABB260 /* Base */; };
@@ -37,6 +38,7 @@
 		2A09A77F2C4CF3E90062E443 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		2A09A7812C4CF3FA0062E443 /* ConfirmLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationViewController.swift; sourceTree = "<group>"; };
 		2A65AA7D2C4D61480055744C /* StudentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentData.swift; sourceTree = "<group>"; };
+		2A65AA7F2C4E31240055744C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		2A76DBB12C42357E00ABB260 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A76DBB42C42357E00ABB260 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A76DBB62C42357E00ABB260 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		2AEF354A2C437E1500229AB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2A65AA7F2C4E31240055744C /* UserInfo.swift */,
 				2A7C13982C4D30E500595342 /* CreateStudentLocationResponse.swift */,
 				2A7C139A2C4D342200595342 /* CreateStudentLocationRequest.swift */,
 				2A7C13962C4CFD3D00595342 /* CustomUITableViewCell.swift */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A65AA802C4E31270055744C /* UserInfo.swift in Sources */,
 				2A9CB57F2C4B59CB00018214 /* StudentLocations.swift in Sources */,
 				2A9CB5832C4B707000018214 /* LogInViewController.swift in Sources */,
 				2A76DBB52C42357E00ABB260 /* AppDelegate.swift in Sources */,

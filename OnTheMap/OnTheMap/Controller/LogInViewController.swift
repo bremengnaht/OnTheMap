@@ -23,6 +23,9 @@ class LogInViewController: UIViewController {
         StudentsData.sharedInstance().students = []
         txtEmail.text = ""
         txtPassword.text = ""
+        UdacityClient.auth = nil
+        UdacityClient.firstName = ""
+        UdacityClient.lastName = ""
     }
     
     //MARK: IBAction
@@ -40,9 +43,20 @@ class LogInViewController: UIViewController {
     func handleLoginResponse(response: LoginResponse?, error: Error?) -> Void {
         if let response = response {
             UdacityClient.auth = response
-            self.performSegue(withIdentifier: "loginSuccessSegue", sender: nil)
+            UdacityClient.getPublicUserData(completion: handleGetPublicUserResponse(response:error:))
         } else {
             showAlert(title: "Login Failed", message: (error as! ErrorResponse).error)
+            enableLogInControls(true)
+        }
+    }
+    
+    func handleGetPublicUserResponse(response: UserInfo?, error: Error?) -> Void {
+        if let response = response {
+            UdacityClient.firstName = response.firstName
+            UdacityClient.lastName = response.lastName
+            self.performSegue(withIdentifier: "loginSuccessSegue", sender: nil)
+        } else {
+            showAlert(title: "Alert !", message: (error as! ErrorResponse).error)
         }
         enableLogInControls(true)
     }

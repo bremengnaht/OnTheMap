@@ -9,7 +9,7 @@ import Foundation
 
 class RequestHelper {
     
-    static func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+    static func taskForGETRequest<ResponseType: Decodable>(url: URL, formatRes: Bool = true, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
@@ -25,8 +25,18 @@ class RequestHelper {
             dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
             
+            // Must do if call from Udacity's API
+            var range = 5..<data.count
+            if !formatRes {
+                range = 0..<data.count
+            }
+            let formattedData = data.subdata(in: range)
+            
+//            print(String(data: data, encoding: .utf8)!)
+//            print(String(data: formattedData, encoding: .utf8)!)
+            
             do {
-                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                let responseObject = try decoder.decode(ResponseType.self, from: formattedData)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
@@ -70,7 +80,9 @@ class RequestHelper {
             dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
             
-            print(String(data: data, encoding: .utf8)!)
+//            print(String(data: data, encoding: .utf8)!)
+//            print(String(data: formattedData, encoding: .utf8)!)
+            
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: formattedData)
                 DispatchQueue.main.async {

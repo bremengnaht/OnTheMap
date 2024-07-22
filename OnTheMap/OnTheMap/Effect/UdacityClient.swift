@@ -10,6 +10,8 @@ import UIKit
 
 class UdacityClient {
     static var auth: LoginResponse?
+    static var firstName: String = String()
+    static var lastName: String = String()
     
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1"
@@ -19,6 +21,7 @@ class UdacityClient {
         case login
         case logout
         case signup
+        case getPublicUserData
         
         var stringValue: String {
             switch self {
@@ -32,6 +35,8 @@ class UdacityClient {
                 return Endpoints.base + "/session"
             case .signup:
                 return "https://auth.udacity.com/sign-up"
+            case .getPublicUserData:
+                return Endpoints.base + "/users/" + (auth?.account.key)!
             }
         }
         
@@ -44,7 +49,7 @@ class UdacityClient {
     // MARK: Student Location APIs
     
     static func getStudentLocations(completion: @escaping (StudentLocations?, Error?) -> Void) -> Void {
-        RequestHelper.taskForGETRequest(url: Endpoints.getStudentLocations.url, responseType: StudentLocations.self, completion: completion)
+        RequestHelper.taskForGETRequest(url: Endpoints.getStudentLocations.url, formatRes: false, responseType: StudentLocations.self, completion: completion)
     }
     
     static func addStudentLocation(requestBody: CreateStudentLocationRequest ,completion: @escaping (CreateStudentLocationResponse?, Error?) -> Void) -> Void {
@@ -86,5 +91,9 @@ class UdacityClient {
     
     static func signUp() -> Void {
         UIApplication.shared.open(Endpoints.signup.url)
+    }
+    
+    static func getPublicUserData(completion: @escaping (UserInfo?, Error?) -> Void) -> Void {
+        RequestHelper.taskForGETRequest(url: Endpoints.getPublicUserData.url, responseType: UserInfo.self, completion: completion)
     }
 }

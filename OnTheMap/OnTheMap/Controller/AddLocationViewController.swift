@@ -55,7 +55,7 @@ class AddLocationViewController: UIViewController {
                     location = marker.first?.location
                 }
                 if let location = location {
-                    self.request = CreateStudentLocationRequest(firstName: "Test", lastName: "User", latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, mapString: locationText, mediaURL: linkText, uniqueKey: UUID().uuidString)
+                    self.request = CreateStudentLocationRequest(firstName: UdacityClient.firstName, lastName: UdacityClient.lastName, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, mapString: locationText, mediaURL: linkText, uniqueKey: UUID().uuidString)
                     self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "addLocationFinalStep", sender: nil)
                 } else {
