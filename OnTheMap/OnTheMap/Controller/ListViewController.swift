@@ -62,6 +62,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func handleGetStudentLocationsResponse(locations: StudentLocations?, error: Error?) -> Void {
         activityIndicator.stopAnimating()
         guard let locations = locations?.results else {
+            showAlert(title: "Get data failed", message: "Data is not available. Please try again.")
             return
         }
         StudentsData.sharedInstance().students = locations
